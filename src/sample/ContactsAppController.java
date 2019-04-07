@@ -41,6 +41,11 @@ public class ContactsAppController {
     public final ObservableList<Contacts> contacts =
             FXCollections.observableArrayList();
 
+    class sortByLast implements Comparator<Contacts> {
+        public int compare(Contacts i1, Contacts i2) {
+            return i1.getLast().compareTo(i2.getLast());
+        }
+    }
     public void initialize(){
         contacts.add(new Contacts("Mohammed","Bhuiyan","(917)462-7397",
                 "mohammedbhuiyan73@gmail.com"));
@@ -51,11 +56,9 @@ public class ContactsAppController {
         contacts.add(new Contacts("James","Apples","(347)863-9999",
                 "kazi@gmail.com"));
 
-        class sortByLast implements Comparator<Contacts> {
-            public int compare(Contacts i1, Contacts i2) {
-                return i1.getLast().compareTo(i2.getLast());
-            }
-        }
+        contacts.add(new Contacts("James","Dog","(347)863-9999",
+                "kazi@gmail.com"));
+
         sortByLast lastNameSort = new sortByLast();
         Collections.sort(contacts, lastNameSort);
         contactsListView.setItems(contacts);
