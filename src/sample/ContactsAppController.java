@@ -84,5 +84,23 @@ public class ContactsAppController {
     }
 
     public void onDeleteButtonPressed(javafx.event.ActionEvent actionEvent) {
+
+        final int selectedIdx = contactsListView.getSelectionModel().getSelectedIndex();
+        if(selectedIdx != -1)
+        {
+            Contacts itemToRemove = contactsListView.getSelectionModel().getSelectedItem();
+
+            final int newSelectedIdx =
+                    (selectedIdx == contactsListView.getItems().size() - 1)
+                            ? selectedIdx - 1
+                            : selectedIdx;
+            contactsListView.getItems().remove(selectedIdx);
+            contactsListView.getSelectionModel().select(newSelectedIdx);
+            //removes the player for the array
+            System.out.println("selectIdx: " + selectedIdx);
+            System.out.println("item: " + itemToRemove);
+           // contactsListView.remove(selectedIdx);
+
+        }
     }
 }
