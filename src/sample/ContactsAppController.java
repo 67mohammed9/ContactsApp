@@ -70,6 +70,8 @@ public class ContactsAppController {
                                                 Contacts oldValue, Contacts newValue) {
                                 firstNameTextField.setText(newValue.getFirst());
                                 lastNameTextField.setText(newValue.getLast());
+                                phoneNumberTextField.setText(newValue.getPhoneNumber());
+                                emailTextField.setText(newValue.getEmail());
                             }
                         }
                 );
