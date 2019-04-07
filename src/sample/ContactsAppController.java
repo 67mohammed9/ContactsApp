@@ -22,14 +22,15 @@ public class ContactsAppController {
     @FXML
     private TextField phoneNumberTextField;
     @FXML
-    private TextField emailTextField;
-    @FXML
     private Button editButton;
     @FXML
     private Button deleteButton;
-
     @FXML
     private Button addButton;
+    @FXML
+    private TextField emailTextField;
+
+
 
     public final ObservableList<Contacts> contacts =
             FXCollections.observableArrayList();
@@ -70,6 +71,49 @@ public class ContactsAppController {
                             }
                         }
                 );
+    }
+
+
+    public void onEditButtonPressed(javafx.event.ActionEvent actionEvent) {
+        final int selectedIdx = contactsListView.getSelectionModel().getSelectedIndex();
+        if(selectedIdx != -1)
+        {
+            Contacts changedinfo = contactsListView.getSelectionModel().getSelectedItem();
+            changedinfo.setFirst(firstNameTextField.getText());
+            changedinfo.setLast(lastNameTextField.getText());
+            changedinfo.setEmail(emailTextField.getText());
+            changedinfo.setPhoneNumber(phoneNumberTextField.getText());
+            contacts.remove(selectedIdx);
+            contacts.add(changedinfo);
+            sortByLast lastNameSort = new sortByLast();
+            Collections.sort(contacts, lastNameSort);
+            contactsListView.setItems(contacts);
+        }
+    }
+
+    public void onDeleteButtonPressed(javafx.event.ActionEvent actionEvent) {
+
+        final int selectedIdx = contactsListView.getSelectionModel().getSelectedIndex();
+        if(selectedIdx != -1)
+        {
+            Contacts itemToRemove = contactsListView.getSelectionModel().getSelectedItem();
+
+            final int newSelectedIdx =
+                    (selectedIdx == contactsListView.getItems().size() - 1)
+                            ? selectedIdx - 1
+                            : selectedIdx;
+            contactsListView.getItems().remove(selectedIdx);
+            contactsListView.getSelectionModel().select(newSelectedIdx);
+            //removes the player for the array
+            System.out.println("selectIdx: " + selectedIdx);
+            System.out.println("item: " + itemToRemove);
+           // contactsListView.remove(selectedIdx);
+
+        }
+    }
+    public void onAddButtonPressed(javafx.event.ActionEvent actionEvent) {
+
+
     }
 
 }
