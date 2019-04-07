@@ -81,6 +81,20 @@ public class ContactsAppController {
 
 
     public void onEditButtonPressed(javafx.event.ActionEvent actionEvent) {
+        final int selectedIdx = contactsListView.getSelectionModel().getSelectedIndex();
+        if(selectedIdx != -1)
+        {
+            Contacts changedinfo = contactsListView.getSelectionModel().getSelectedItem();
+            changedinfo.setFirst(firstNameTextField.getText());
+            changedinfo.setLast(lastNameTextField.getText());
+            changedinfo.setEmail(emailTextField.getText());
+            changedinfo.setPhoneNumber(phoneNumberTextField.getText());
+            contacts.remove(selectedIdx);
+            contacts.add(changedinfo);
+            sortByLast lastNameSort = new sortByLast();
+            Collections.sort(contacts, lastNameSort);
+            contactsListView.setItems(contacts);
+        }
     }
 
     public void onDeleteButtonPressed(javafx.event.ActionEvent actionEvent) {
