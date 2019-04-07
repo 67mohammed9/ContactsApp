@@ -22,21 +22,14 @@ public class ContactsAppController {
     @FXML
     private TextField phoneNumberTextField;
     @FXML
+    private TextField emailTextField;
+    @FXML
     private Button editButton;
     @FXML
     private Button deleteButton;
-    @FXML
-    private TextField emailTextField;
-    @FXML
-    private Button onAddButtonPressed;
-    @FXML
-    void onDeleteButtonPressed(ActionEvent event) {
 
-    }
     @FXML
-    void onEditButtonPressed(ActionEvent event) {
-
-    }
+    private Button addButton;
 
     public final ObservableList<Contacts> contacts =
             FXCollections.observableArrayList();
@@ -79,10 +72,4 @@ public class ContactsAppController {
                 );
     }
 
-
-    public void onEditButtonPressed(javafx.event.ActionEvent actionEvent) {
-    }
-
-    public void onDeleteButtonPressed(javafx.event.ActionEvent actionEvent) {
-    }
 }

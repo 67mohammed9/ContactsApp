@@ -49,6 +49,6 @@
       </GridPane>
    </center>
    <bottom>
-      <Button fx:id="onAddButtonPressed" alignment="BOTTOM_LEFT" mnemonicParsing="false" text="Add" />
+      <Button fx:id="addButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#onAddButtonPressed" text="Add" />
    </bottom>
 </BorderPane>
