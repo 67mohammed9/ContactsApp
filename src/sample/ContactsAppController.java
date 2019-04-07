@@ -8,42 +8,31 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import org.w3c.dom.Text;
-
 import java.awt.event.ActionEvent;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ContactsAppController {
-
     @FXML
     private ListView<Contacts> contactsListView;
-
     @FXML
     private TextField firstNameTextField;
-
     @FXML
     private TextField lastNameTextField;
-
     @FXML
     private TextField phoneNumberTextField;
-
     @FXML
     private Button editButton;
-
     @FXML
     private Button deleteButton;
-
     @FXML
     private TextField emailTextField;
-
     @FXML
     private Button onAddButtonPressed;
-
     @FXML
     void onDeleteButtonPressed(ActionEvent event) {
 
     }
-
     @FXML
     void onEditButtonPressed(ActionEvent event) {
 
@@ -59,6 +48,16 @@ public class ContactsAppController {
                 "varun@gmail.com"));
         contacts.add(new Contacts("Kazi","siam","(347)863-9999",
                 "kazi@gmail.com"));
+        contacts.add(new Contacts("James","Apples","(347)863-9999",
+                "kazi@gmail.com"));
+
+        class sortByLast implements Comparator<Contacts> {
+            public int compare(Contacts i1, Contacts i2) {
+                return i1.getLast().compareTo(i2.getLast());
+            }
+        }
+        sortByLast lastNameSort = new sortByLast();
+        Collections.sort(contacts, lastNameSort);
         contactsListView.setItems(contacts);
 
 
