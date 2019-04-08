@@ -10,15 +10,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.Label;
-import javafx.scene.text.Text;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
 
 public class ContactsAppController {
+    @FXML
+    private Button uploadButton;
+    @FXML
+    private ImageView imageView;
     @FXML
     private GridPane gridPane;
     @FXML
@@ -86,6 +93,8 @@ public class ContactsAppController {
 
 
     public void onEditButtonPressed(javafx.event.ActionEvent actionEvent) {
+        addButton.setDisable(false);
+        saveButton.setDisable(true);
         final int selectedIdx = contactsListView.getSelectionModel().getSelectedIndex();
         if(selectedIdx != -1)
         {
@@ -99,8 +108,6 @@ public class ContactsAppController {
             sortByLast lastNameSort = new sortByLast();
             Collections.sort(contacts, lastNameSort);
             contactsListView.setItems(contacts);
-            addButton.setDisable(false);
-            saveButton.setDisable(true);
         }
     }
 
@@ -176,4 +183,18 @@ public class ContactsAppController {
         addButton.setDisable(false);
         saveButton.setDisable(true);
     }
+
+
+    public void onUploadButtonPressed(javafx.event.ActionEvent actionEvent){
+        FileChooser fc = new FileChooser();
+        File selectedFile = fc.showOpenDialog(null);
+        String s = null;
+        if(selectedFile != null)
+        {
+             s = selectedFile.getPath();
+             Image image = new Image("file:///"+s);
+             imageView.setImage(image);
+        }
+    }
+
 }

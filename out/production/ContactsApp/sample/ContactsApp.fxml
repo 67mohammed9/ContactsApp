@@ -41,8 +41,7 @@
                </effect></TextField>
             <TextField fx:id="lastNameTextField" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" promptText="Last Name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
             <TextField fx:id="phoneNumberTextField" alignment="CENTER" maxWidth="-Infinity" promptText="(111)222-3333" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonPressed" text="Edit" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditButtonPressed" text="Save Edits" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label />
             <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteButtonPressed" text="Delete" />
             <Label text="Email:" GridPane.rowIndex="4" />
@@ -52,14 +51,16 @@
             <Text fill="#f20a0a" strokeType="OUTSIDE" strokeWidth="0.0" text="      *" translateX="50.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text fill="#f20a0a" strokeType="OUTSIDE" strokeWidth="0.0" text="      *" translateX="50.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Text fill="#f20a0a" strokeType="OUTSIDE" strokeWidth="0.0" text="      *" translateX="50.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </center>
    <bottom>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ButtonBar prefHeight="40.0" prefWidth="522.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonPressed" text="Add" translateX="-439.0" />
-            <Button fx:id="saveButton" disable="true" mnemonicParsing="false" onAction="#onSaveButtonPressed" text="Save" translateX="-440.0" />
+          <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonPressed" text="Add New Contact" translateX="-200.0" />
+            <Button fx:id="saveButton" disable="true" mnemonicParsing="false" onAction="#onSaveButtonPressed" text="Save Contact" translateX="-200.0" />
+            <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#onUploadButtonPressed" text="Upload" translateX="-200.0" />
         </buttons>
       </ButtonBar>
    </bottom>

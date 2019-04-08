@@ -1,10 +1,14 @@
 package sample;
 
+
+import java.awt.*;
+
 public class Contacts {
     private String first;
     private String last;
     private String phoneNumber;
     private String email;
+
 
     public Contacts(String first, String last, String phoneNumber, String email) {
         this.first = first;
