@@ -5,12 +5,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import java.awt.event.ActionEvent;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -96,6 +99,8 @@ public class ContactsAppController {
             sortByLast lastNameSort = new sortByLast();
             Collections.sort(contacts, lastNameSort);
             contactsListView.setItems(contacts);
+            addButton.setDisable(false);
+            saveButton.setDisable(true);
         }
     }
 
@@ -115,9 +120,9 @@ public class ContactsAppController {
             //removes the player for the array
             System.out.println("selectIdx: " + selectedIdx);
             System.out.println("item: " + itemToRemove);
-           // contactsListView.remove(selectedIdx);
-
         }
+        addButton.setDisable(false);
+        saveButton.setDisable(true);
     }
     public void onAddButtonPressed(javafx.event.ActionEvent actionEvent) {
         firstNameTextField.clear();
@@ -127,19 +132,48 @@ public class ContactsAppController {
         addButton.setDisable(true);
         saveButton.setDisable(false);
     }
+
     public void onSaveButtonPressed(javafx.event.ActionEvent actionEvent){
-        Contacts newContact = new Contacts(" "," "," "," ");
+        Contacts newContact = new Contacts(null,null,null,null);
         newContact.setFirst(firstNameTextField.getText());
         newContact.setLast(lastNameTextField.getText());
         newContact.setPhoneNumber(phoneNumberTextField.getText());
         newContact.setEmail(emailTextField.getText());
-        if(newContact.getFirst() != " " && newContact.getLast() != " " && newContact.getPhoneNumber() != " " && newContact.getEmail() != " "){
+        Node v = gridPane.getChildren().get(12);
+        Node w = gridPane.getChildren().get(13);
+        Node x = gridPane.getChildren().get(14);
+        Node y = gridPane.getChildren().get(15);
+        Node z = gridPane.getChildren().get(16);
+        if((newContact.getFirst().isEmpty()==false  || newContact.getLast().isEmpty() == false) &&
+                (newContact.getPhoneNumber().isEmpty() == false || newContact.getEmail().isEmpty() == false)){
             contacts.add(newContact);
-            contactsListView.setItems(contacts); 
+            sortByLast lastNameSort = new sortByLast();
+            Collections.sort(contacts, lastNameSort);
+            v.setVisible(false);
+            w.setVisible(false);
+            x.setVisible(false);
+            y.setVisible(false);
+            z.setVisible(false);
         }
-
+        else{
+            if((newContact.getFirst().isEmpty()==true  || newContact.getLast().isEmpty() == true )&&
+                    (newContact.getPhoneNumber().isEmpty() == true || newContact.getEmail().isEmpty() == true)){
+                v.setVisible(true);
+                if(newContact.getFirst().isEmpty()){
+                    w.setVisible(true);
+                }
+                if(newContact.getLast().isEmpty()){
+                    x.setVisible(true);
+                }
+                if(newContact.getPhoneNumber().isEmpty()){
+                    y.setVisible(true);
+                }
+                if(newContact.getEmail().isEmpty()){
+                    z.setVisible(true);
+                }
+            }
+        }
         addButton.setDisable(false);
         saveButton.setDisable(true);
     }
-
 }
