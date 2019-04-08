@@ -194,6 +194,7 @@ public class ContactsAppController {
              s = selectedFile.getPath();
              Image image = new Image("file:///"+s);
              imageView.setImage(image);
+
         }
     }
 
