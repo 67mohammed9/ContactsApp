@@ -60,16 +60,16 @@ public class ContactsAppController {
     }
     public void initialize(){
         contacts.add(new Contacts("Mohammed","Bhuiyan","(917)462-7397",
-                "mohammedbhuiyan73@gmail.com"));
+                "mohammedbhuiyan73@gmail.com",null,null));
         contacts.add(new Contacts("Varun","Chenna","(347)414-1917",
-                "varun@gmail.com"));
+                "varun@gmail.com",null,null));
         contacts.add(new Contacts("Kazi","siam","(347)863-9999",
-                "kazi@gmail.com"));
+                "kazi@gmail.com",null,null));
         contacts.add(new Contacts("James","Apples","(347)863-9999",
-                "kazi@gmail.com"));
+                "kazi@gmail.com",null,null));
 
-        contacts.add(new Contacts("James","Dog","(347)863-9999",
-                "kazi@gmail.com"));
+        contacts.add(new Contacts("James","Dolan","(347)863-9999",
+                "kazi@gmail.com",null,null));
 
         sortByLast lastNameSort = new sortByLast();
         Collections.sort(contacts, lastNameSort);
@@ -86,6 +86,7 @@ public class ContactsAppController {
                                 lastNameTextField.setText(newValue.getLast());
                                 phoneNumberTextField.setText(newValue.getPhoneNumber());
                                 emailTextField.setText(newValue.getEmail());
+                                imageView.setImage(new Image(newValue.getImagePath()));
                             }
                         }
                 );
@@ -103,6 +104,7 @@ public class ContactsAppController {
             editsMade.setLast(lastNameTextField.getText());
             editsMade.setEmail(emailTextField.getText());
             editsMade.setPhoneNumber(phoneNumberTextField.getText());
+            editsMade.setImagePath(editsMade.getImagePath());
             contacts.remove(selectedIdx);
             contacts.add(editsMade);
             sortByLast lastNameSort = new sortByLast();
@@ -117,11 +119,13 @@ public class ContactsAppController {
         if(selectedIdx != -1)
         {
             Contacts itemToRemove = contactsListView.getSelectionModel().getSelectedItem();
-
-            final int newSelectedIdx =
-                    (selectedIdx == contactsListView.getItems().size() - 1)
-                            ? selectedIdx - 1
-                            : selectedIdx;
+            final int newSelectedIdx;
+                    if(selectedIdx == contactsListView.getItems().size() - 1) {
+                        newSelectedIdx = selectedIdx - 1;
+                    }
+                    else {
+                       newSelectedIdx =  selectedIdx;
+                    }
             contactsListView.getItems().remove(selectedIdx);
             contactsListView.getSelectionModel().select(newSelectedIdx);
             //removes the player for the array
@@ -141,7 +145,7 @@ public class ContactsAppController {
     }
 
     public void onSaveButtonPressed(javafx.event.ActionEvent actionEvent){
-        Contacts newContact = new Contacts(null,null,null,null);
+        Contacts newContact = new Contacts(null,null,null,null,null,null);
         newContact.setFirst(firstNameTextField.getText());
         newContact.setLast(lastNameTextField.getText());
         newContact.setPhoneNumber(phoneNumberTextField.getText());
@@ -189,12 +193,11 @@ public class ContactsAppController {
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
         String s = null;
+        Contacts selectedContact = contactsListView.getSelectionModel().getSelectedItem();
         if(selectedFile != null)
         {
-             s = selectedFile.getPath();
-             Image image = new Image("file:///"+s);
-             imageView.setImage(image);
-
+             s= "file:///"+selectedFile.getPath();
+             selectedContact.setImagePath(s);
         }
     }
 
