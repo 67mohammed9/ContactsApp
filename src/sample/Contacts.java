@@ -58,8 +58,9 @@ public class Contacts {
         this.email = email;
     }
 
+
     @Override
-    public String toString() {return getLast() + ", " + getFirst();}
+    public String toString(){return getLast()+","+getFirst();}
 
 }
 //Cool

@@ -7,12 +7,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import javafx.util.Callback;
+
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.nio.file.Path;
@@ -59,17 +62,17 @@ public class ContactsAppController {
         }
     }
     public void initialize(){
-        contacts.add(new Contacts("Mohammed","Bhuiyan","(917)462-7397",
-                "mohammedbhuiyan73@gmail.com",null));
-        contacts.add(new Contacts("Varun","Chenna","(347)414-1917",
-                "varun@gmail.com",null));
-        contacts.add(new Contacts("Kazi","siam","(347)863-9999",
-                "kazi@gmail.com",null));
-        contacts.add(new Contacts("James","Apples","(347)863-9999",
-                "kazi@gmail.com",null));
+        contacts.add(new Contacts("James","Harden","(917)462-7397",
+                "jamesharden73@gmail.com",""));
+//        contacts.add(new Contacts("Varun","Chenna","(347)414-1917",
+//                "varun@gmail.com",null));
+//        contacts.add(new Contacts("Kazi","siam","(347)863-9999",
+//                "kazi@gmail.com",null));
+//        contacts.add(new Contacts("James","Apples","(347)863-9999",
+//                "kazi@gmail.com",null));
 
-        contacts.add(new Contacts("James","Dolan","(347)863-9999",
-                "kazi@gmail.com",null));
+//        contacts.add(new Contacts("James","Dolan","(347)863-9999",
+//                "kazi@gmail.com",null));
 
         sortByLast lastNameSort = new sortByLast();
         Collections.sort(contacts, lastNameSort);
@@ -92,6 +95,15 @@ public class ContactsAppController {
                         }
                 );
 
+        contactsListView.setCellFactory(
+                new Callback<ListView<Contacts>, ListCell<Contacts>>() {
+                    @Override
+                    public ListCell<Contacts> call(ListView<Contacts> param) {
+                        return new ImageTextCell();
+                    }
+                }
+        );
+
     }
     private String pathSaver = null;
 
@@ -106,7 +118,7 @@ public class ContactsAppController {
             editsMade.setLast(lastNameTextField.getText());
             editsMade.setEmail(emailTextField.getText());
             editsMade.setPhoneNumber(phoneNumberTextField.getText());
-            editsMade.setImagePath(pathSaver);
+            editsMade.setImagePath(editsMade.getImagePath());
             contacts.remove(selectedIdx);
             contacts.add(editsMade);
             sortByLast lastNameSort = new sortByLast();
@@ -146,6 +158,7 @@ public class ContactsAppController {
         imageView.setImage(null);
         addButton.setDisable(true);
         saveButton.setDisable(false);
+        editButton.setDisable(true);
     }
 
     public void onSaveButtonPressed(javafx.event.ActionEvent actionEvent){
@@ -163,6 +176,7 @@ public class ContactsAppController {
         Collections.sort(contacts, lastNameSort);
         addButton.setDisable(false);
         saveButton.setDisable(true);
+        editButton.setDisable(false);
         pathSaver = null;
     }
 
