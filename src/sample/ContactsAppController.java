@@ -106,7 +106,7 @@ public class ContactsAppController {
             editsMade.setLast(lastNameTextField.getText());
             editsMade.setEmail(emailTextField.getText());
             editsMade.setPhoneNumber(phoneNumberTextField.getText());
-            editsMade.setImagePath(editsMade.getImagePath());
+            editsMade.setImagePath(pathSaver);
             contacts.remove(selectedIdx);
             contacts.add(editsMade);
             sortByLast lastNameSort = new sortByLast();
@@ -146,7 +146,6 @@ public class ContactsAppController {
         imageView.setImage(null);
         addButton.setDisable(true);
         saveButton.setDisable(false);
-        uploadButton.setDisable(false);
     }
 
     public void onSaveButtonPressed(javafx.event.ActionEvent actionEvent){
@@ -178,8 +177,6 @@ public class ContactsAppController {
         {
              path= "file:///"+selectedFile.getPath();
              pathSaver=path;
-             Contacts selectedPerson = contactsListView.getSelectionModel().getSelectedItem();
-             selectedPerson.setImagePath(path);
              imageView.setImage(new Image(path));
         }
     }
