@@ -60,16 +60,16 @@ public class ContactsAppController {
     }
     public void initialize(){
         contacts.add(new Contacts("Mohammed","Bhuiyan","(917)462-7397",
-                "mohammedbhuiyan73@gmail.com",null,null));
+                "mohammedbhuiyan73@gmail.com",null));
         contacts.add(new Contacts("Varun","Chenna","(347)414-1917",
-                "varun@gmail.com",null,null));
+                "varun@gmail.com",null));
         contacts.add(new Contacts("Kazi","siam","(347)863-9999",
-                "kazi@gmail.com",null,null));
+                "kazi@gmail.com",null));
         contacts.add(new Contacts("James","Apples","(347)863-9999",
-                "kazi@gmail.com",null,null));
+                "kazi@gmail.com",null));
 
         contacts.add(new Contacts("James","Dolan","(347)863-9999",
-                "kazi@gmail.com",null,null));
+                "kazi@gmail.com",null));
 
         sortByLast lastNameSort = new sortByLast();
         Collections.sort(contacts, lastNameSort);
@@ -82,6 +82,7 @@ public class ContactsAppController {
                             @Override
                             public void changed(ObservableValue<? extends Contacts> ov,
                                                 Contacts oldValue, Contacts newValue) {
+                                imageView.setImage(null);
                                 firstNameTextField.setText(newValue.getFirst());
                                 lastNameTextField.setText(newValue.getLast());
                                 phoneNumberTextField.setText(newValue.getPhoneNumber());
@@ -90,6 +91,7 @@ public class ContactsAppController {
                             }
                         }
                 );
+
     }
 
 
@@ -140,64 +142,43 @@ public class ContactsAppController {
         lastNameTextField.clear();
         phoneNumberTextField.clear();
         emailTextField.clear();
+        imageView.setImage(null);
         addButton.setDisable(true);
         saveButton.setDisable(false);
+        uploadButton.setDisable(false);
     }
 
     public void onSaveButtonPressed(javafx.event.ActionEvent actionEvent){
-        Contacts newContact = new Contacts(null,null,null,null,null,null);
+        Contacts newContact = new Contacts(null,null,null,null,null);
         newContact.setFirst(firstNameTextField.getText());
         newContact.setLast(lastNameTextField.getText());
         newContact.setPhoneNumber(phoneNumberTextField.getText());
         newContact.setEmail(emailTextField.getText());
-        Node v = gridPane.getChildren().get(12);
-        Node w = gridPane.getChildren().get(13);
-        Node x = gridPane.getChildren().get(14);
-        Node y = gridPane.getChildren().get(15);
-        Node z = gridPane.getChildren().get(16);
+        //newContact.setImagePath();
         if((newContact.getFirst().isEmpty()==false  || newContact.getLast().isEmpty() == false) &&
                 (newContact.getPhoneNumber().isEmpty() == false || newContact.getEmail().isEmpty() == false)){
             contacts.add(newContact);
-            sortByLast lastNameSort = new sortByLast();
-            Collections.sort(contacts, lastNameSort);
-            v.setVisible(false);
-            w.setVisible(false);
-            x.setVisible(false);
-            y.setVisible(false);
-            z.setVisible(false);
         }
-        else{
-            if((newContact.getFirst().isEmpty()==true  || newContact.getLast().isEmpty() == true )&&
-                    (newContact.getPhoneNumber().isEmpty() == true || newContact.getEmail().isEmpty() == true)){
-                v.setVisible(true);
-                if(newContact.getFirst().isEmpty()){
-                    w.setVisible(true);
-                }
-                if(newContact.getLast().isEmpty()){
-                    x.setVisible(true);
-                }
-                if(newContact.getPhoneNumber().isEmpty()){
-                    y.setVisible(true);
-                }
-                if(newContact.getEmail().isEmpty()){
-                    z.setVisible(true);
-                }
-            }
-        }
+        sortByLast lastNameSort = new sortByLast();
+        Collections.sort(contacts, lastNameSort);
         addButton.setDisable(false);
         saveButton.setDisable(true);
+        imageView.setImage(null);
     }
+
 
 
     public void onUploadButtonPressed(javafx.event.ActionEvent actionEvent){
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
-        String s = null;
-        Contacts selectedContact = contactsListView.getSelectionModel().getSelectedItem();
+        String path = null;
+
         if(selectedFile != null)
         {
-             s= "file:///"+selectedFile.getPath();
-             selectedContact.setImagePath(s);
+             path= "file:///"+selectedFile.getPath();
+             Contacts selectedPerson = contactsListView.getSelectionModel().getSelectedItem();
+             selectedPerson.setImagePath(path);
+            imageView.setImage(new Image(path));
         }
     }
 
