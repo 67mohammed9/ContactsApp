@@ -1,16 +1,41 @@
 package sample;
 
+
+import java.awt.*;
+
 public class Contacts {
     private String first;
     private String last;
     private String phoneNumber;
     private String email;
+    private Image image;
 
-    public Contacts(String first, String last, String phoneNumber, String email) {
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    private String imagePath;
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+
+    public Contacts(String first, String last, String phoneNumber, String email, Image image, String imagePath) {
         this.first = first;
         this.last = last;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.image = image;
+        this.imagePath = imagePath;
     }
 
     public String getFirst() {
