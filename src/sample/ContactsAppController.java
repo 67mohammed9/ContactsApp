@@ -93,7 +93,7 @@ public class ContactsAppController {
                 );
 
     }
-
+    private String pathSaver = null;
 
     public void onEditButtonPressed(javafx.event.ActionEvent actionEvent) {
         addButton.setDisable(false);
@@ -112,6 +112,7 @@ public class ContactsAppController {
             sortByLast lastNameSort = new sortByLast();
             Collections.sort(contacts, lastNameSort);
             contactsListView.setItems(contacts);
+            pathSaver = null;
         }
     }
 
@@ -154,7 +155,7 @@ public class ContactsAppController {
         newContact.setLast(lastNameTextField.getText());
         newContact.setPhoneNumber(phoneNumberTextField.getText());
         newContact.setEmail(emailTextField.getText());
-        //newContact.setImagePath();
+        newContact.setImagePath(pathSaver);
         if((newContact.getFirst().isEmpty()==false  || newContact.getLast().isEmpty() == false) &&
                 (newContact.getPhoneNumber().isEmpty() == false || newContact.getEmail().isEmpty() == false)){
             contacts.add(newContact);
@@ -163,7 +164,7 @@ public class ContactsAppController {
         Collections.sort(contacts, lastNameSort);
         addButton.setDisable(false);
         saveButton.setDisable(true);
-        imageView.setImage(null);
+        pathSaver = null;
     }
 
 
@@ -176,9 +177,10 @@ public class ContactsAppController {
         if(selectedFile != null)
         {
              path= "file:///"+selectedFile.getPath();
+             pathSaver=path;
              Contacts selectedPerson = contactsListView.getSelectionModel().getSelectedItem();
              selectedPerson.setImagePath(path);
-            imageView.setImage(new Image(path));
+             imageView.setImage(new Image(path));
         }
     }
 

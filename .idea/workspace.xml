@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="names work on listview1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ContactsApp/sample/Contacts.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ContactsApp/sample/Contacts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ContactsApp/sample/ContactsAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ContactsApp/sample/ContactsAppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Contacts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Contacts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ContactsAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ContactsAppController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -78,8 +74,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/ContactsAppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="176" column="9" lean-forward="true" selection-start-line="176" selection-start-column="9" selection-end-line="176" selection-end-column="9" />
+            <state relative-caret-position="311">
+              <caret line="184" column="5" lean-forward="true" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1470#1471#0" expanded="true" />
@@ -274,7 +270,7 @@
       <workItem from="1554830662250" duration="1605000" />
       <workItem from="1554832756030" duration="234000" />
       <workItem from="1554835191707" duration="2183000" />
-      <workItem from="1554851564435" duration="6147000" />
+      <workItem from="1554851564435" duration="6861000" />
     </task>
     <task id="LOCAL-00001" summary="added contacts class">
       <created>1554600436599</created>
@@ -301,7 +297,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53556000" />
+    <option name="totallyTimeSpent" value="54270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1292" height="692" extended-state="6" />
@@ -385,8 +381,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ContactsAppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="176" column="9" lean-forward="true" selection-start-line="176" selection-start-column="9" selection-end-line="176" selection-end-column="9" />
+        <state relative-caret-position="311">
+          <caret line="184" column="5" lean-forward="true" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1470#1471#0" expanded="true" />
