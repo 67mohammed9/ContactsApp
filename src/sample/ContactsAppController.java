@@ -62,17 +62,16 @@ public class ContactsAppController {
         }
     }
     public void initialize(){
-        contacts.add(new Contacts("James","Harden","(917)462-7397",
-                "jamesharden73@gmail.com",""));
-//        contacts.add(new Contacts("Varun","Chenna","(347)414-1917",
-//                "varun@gmail.com",null));
-//        contacts.add(new Contacts("Kazi","siam","(347)863-9999",
-//                "kazi@gmail.com",null));
-//        contacts.add(new Contacts("James","Apples","(347)863-9999",
-//                "kazi@gmail.com",null));
-
-//        contacts.add(new Contacts("James","Dolan","(347)863-9999",
-//                "kazi@gmail.com",null));
+contacts.add(new Contacts("James","Harden","(917)462-7397",
+                "jamesharden73@gmail.com","sample/images/jamesHarden.jpg"));
+        contacts.add(new Contacts("Jeniffer","Lawrence","(347)414-1917",
+                "jenniferlawrence@gmail.com","sample/images/jeniferLawrence.jpg"));
+        contacts.add(new Contacts("Kanye","West","(347)863-9999",
+                "kanyewest@gmail.com","sample/images/kanyeWest.jpg"));
+        contacts.add(new Contacts("Homer","Simpson","(347)863-9999",
+                "homersimpson@gmail.com","sample/images/simp1.jpg"));
+        contacts.add(new Contacts("Kevin","Hart","(347)863-9999",
+                "kevinhart@gmail.com","sample/images/kevin-hart1.jpg"));
 
         sortByLast lastNameSort = new sortByLast();
         Collections.sort(contacts, lastNameSort);
@@ -118,7 +117,7 @@ public class ContactsAppController {
             editsMade.setLast(lastNameTextField.getText());
             editsMade.setEmail(emailTextField.getText());
             editsMade.setPhoneNumber(phoneNumberTextField.getText());
-            editsMade.setImagePath(editsMade.getImagePath());
+            editsMade.setImagePath(pathSaver);
             contacts.remove(selectedIdx);
             contacts.add(editsMade);
             sortByLast lastNameSort = new sortByLast();
